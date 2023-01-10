@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from 'styled-components';
 
 import Header from './Components/Header'
@@ -12,14 +13,16 @@ import GlobalStyle from './GlobalStyle'
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-      <GlobalStyle />
-        <main>
-          <img src={require('./Image/todolistlogo.png')} alt='투두의 숲'/>
-        </main>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <GlobalStyle />
+          <main>
+            <div>
+              <img src='todolistlogo.png' alt='투두의 숲'/>
+            </div>
+          </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
