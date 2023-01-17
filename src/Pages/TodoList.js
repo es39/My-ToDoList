@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import styled from "styled-components";
 
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
-import Nav from './Nav'
+import Nav from '../Components/Nav'
 
 export const TodoList = () => {
     return (
@@ -12,7 +11,7 @@ export const TodoList = () => {
         <Header />
         <Nav />
           <header>
-            This area is Header
+            This area is TodoList
           </header>
         <Footer />
       </main>
