@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react"
+
+import Nav from './Nav'
 
 const HeaderStyle = styled.header`
     display: flex;
@@ -25,31 +26,16 @@ const ImgWrapper = styled.div`
   left: 0;
   margin-left: 20px;
 `
-const IconWrapper = styled.div `
-  width: 50px;
-  height: 50px;
-  display: flex;
-  position: fixed;
-  right: 0;
-  margin-right: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-`
-
-export const Header = () => {
+export const Header = ({ modalOpen, setModalOpen }) => {
     return (
       <HeaderStyle>
         <ImgWrapper>
           <img src="logo2.png" alt="동물의 숲 나뭇잎 로고"/>
         </ImgWrapper>
-        This area is Header 
-        <IconWrapper>
-          <i class="fa-solid fa-bars"></i>
-        </IconWrapper>
+        <Nav />
       </HeaderStyle>
     );
-  }
+}
   
 export default Header;

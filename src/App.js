@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Main from './Pages/Main'
 import TodoList from './Pages/TodoList'
