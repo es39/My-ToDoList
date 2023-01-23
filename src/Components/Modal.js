@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react"
+import Nav from './Nav'
 
 const ModalStyle = styled.div `
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     height: 100%;
+`
+const ModalBtn = styled.button`
+    border: none;
+    background-color: transparent;
 `
 const ModalBack = styled.div`
     background: rgba(0, 0, 0, 0.5); 
@@ -14,7 +19,7 @@ const ModalBack = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    // flex-direction: row-reverse;
     z-index: 999;
     position: fixed;
     top: 0;
@@ -25,33 +30,32 @@ const ModalBack = styled.div`
 export const ModalView = styled.div.attrs((props) => ({
     role: 'dialog',
   }))`
-    // TODO : Modal창 CSS를 구현합니다.
     background-color: white;
-    width: 300px;
-    height: 100px;
-    color: var(--coz-purple-600);
+    width: calc(100%/2);
+    height: 100vh;
+    color: black;
     border-radius: 15px;
     text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    // bottom: 0;
+    z-index: 999;
   `;
 
-export const Modal = () => {
-    const [modal, setModalOpen] = useState(false)
+export const Modal = ({ modal, setModal }) => {
     const openModalHandler = () => {
-        setModalOpen(!modal)
+        setModal(!modal)
     }
 
     return (
         <ModalStyle>
-            <div className='open-modal-btn' onClick={openModalHandler}><i class="fa-solid fa-bars"></i></div>
-            { modal === true ? 
-                <ModalBack onClick={openModalHandler}>
+            <ModalBack onClick={openModalHandler}>
                 <ModalView onClick={(event) => {event.stopPropagation()}}>
-                    <button className='exit-btn' onClick={openModalHandler}>x</button>
-                    I'M MODAL
+                    <ModalBtn onClick={openModalHandler}>x</ModalBtn>
+                        <Nav />
                 </ModalView>
-                </ModalBack>
-            : null
-            }
+            </ModalBack>
         </ModalStyle>
     )
 }
