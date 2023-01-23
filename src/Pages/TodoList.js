@@ -7,14 +7,14 @@ import Footer from '../Components/Footer'
 import Nav from '../Components/Nav'
 
 export const TodoList = () => {
-  const [modalOpen, setModalOpen] = useState(false)
+  
     return (
       <main>
-        <Header modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+        <Header />
           <main>
             This area is TodoList
           </main>
-        <Footer />
+          <Footer />
       </main>
     );
   }

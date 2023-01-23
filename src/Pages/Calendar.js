@@ -1,12 +1,16 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import styled from "styled-components";
+
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 export const Calendar = () => {
     return (
-      <header>
-        This area is Header
-      </header>
+      <main>
+        <Header />
+          <div>i'm calendar</div>
+        <Footer />
+      </main>
     );
   }
   
