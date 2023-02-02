@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import styled from "styled-components";
-import Modal from './Modal'
 
 const NavLink = styled.nav `
   // width: 50px;
@@ -30,4 +29,10 @@ export const Nav = () => {
 }
 
 export default Nav;
+
+/*
+  Nav.js 구현 목표 체크리스트
+  1. Link to 로 연결 * 
+  2. styled-components 적용 
+*/
   

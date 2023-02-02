@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react"
 import Nav from './Nav'
 
 const ModalStyle = styled.div `
@@ -61,3 +60,11 @@ export const Modal = ({ modal, setModal }) => {
 }
 
 export default Modal;
+
+/* 
+  Modal.js 구현 목표 체크리스트
+  1. 모달 배경 구현 *
+  2. 모달창 구현 * 
+  3. 클릭 시 창이 보이도록 클릭 이벤트로 기능 구현 * 
+  4. styled-components 적용  
+*/

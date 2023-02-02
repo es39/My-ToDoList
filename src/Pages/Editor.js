@@ -13,3 +13,10 @@ export default function Editor() {
         </main>
     )
 }
+
+/*
+  Editor.js 구현 목표 체크리스트
+  1. 헤더 컴포넌트 불러오기 * 
+  2. 푸터 컴포넌트 불러오기 * 
+  3. 깃허브, 인스타그램, 블로그 링크 삽입 
+*/

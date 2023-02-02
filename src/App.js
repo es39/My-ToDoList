@@ -36,3 +36,12 @@ function App() {
 }
 
 export default App;
+
+/* 
+  App.js 구현 목표 체크리스트
+  1. Global Style 적용 *
+  2. Route path 연결  *
+  2-1. 이스터 에그 추가하기
+  3. Semantic tag 사용 * 
+  4. (Advanced) 로컬 스토리지 활용하기 
+*/

@@ -1,8 +1,6 @@
 import '../App.css';
 import React from 'react';
-import { useState } from 'react'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 import GlobalStyle from '../GlobalStyle'
 
@@ -16,3 +14,9 @@ export default function Main() {
       </div>
   );
 }
+
+/*
+  Main.js 구현 목표 체크리스트
+  1. 맨 처음 화면에 필요한 아이콘 삽입 *
+  2. 클릭 시 /todolist로 이동 *
+*/

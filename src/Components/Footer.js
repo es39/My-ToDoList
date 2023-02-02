@@ -27,4 +27,9 @@ export const Footer = () => {
   }
   
 export default Footer;
-  
+
+/*
+  Footer.js 구현 목표 체크리스트
+  1. styled-components 적용 * 
+  2. 문구 넣기 * 
+*/

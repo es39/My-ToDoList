@@ -50,3 +50,12 @@ export const Header = () => {
 }
   
 export default Header;
+
+/* 
+  Header.js 구현 목표 체크리스트
+  1. 메뉴바 아이콘 삽입 * 
+  2. 메뉴바 아이콘 클릭 시 모달창 화면이 보이도록 구현 * 
+  3. 나뭇잎 이미지 삽입 * 
+  4. 나뭇잎 이미지 클릭 시 이스터 에그 화면으로 이동 
+  5. styled-components 적용  
+*/
