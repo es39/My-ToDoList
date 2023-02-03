@@ -61,7 +61,7 @@ export default TodoList;
   2. 푸터 컴포넌트 불러오기 *
   3. create 기능 추가
   3-1. 리스트 추가할 시 모달 or 입력창
-  4. read 기능 추가
+  4. read 기능 추가 * 
   5. update 기능 추가
   6. delete 기능 추가 
   7. 체크박스 기능 추가
