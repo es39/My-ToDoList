@@ -1,24 +1,48 @@
 import React from "react";
-import { useState } from 'react'
+import { useState } from "react";
 import styled from "styled-components";
 
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
-import Nav from '../Components/Nav'
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import TodoItem from "../Components/TodoItem";
+import TodoInsert from "../Components/TodoInsert";
 
 export const TodoList = () => {
-  
-    return (
-      <main>
-        <Header />
-          <main>
-            This area is TodoList
-          </main>
-          <Footer />
-      </main>
-    );
-  }
-  
+  const [todoList, setTodolist] = useState([
+    {
+      id: 1,
+      text: "할 일1",
+      checked: true,
+    },
+    {
+      id: 2,
+      text: "할 일2",
+      checked: true,
+    },
+    {
+      id: 3,
+      text: "할 일3",
+      checked: false,
+    },
+    {
+      id: 4,
+      text: "할 일4",
+      checked: true,
+    },
+  ]);
+
+  return (
+    <main>
+      <Header />
+      <TodoInsert />
+      {todoList.map((todoList) => (
+        <TodoItem key={todoList.id} todoList={todoList} />
+      ))}
+      <Footer />
+    </main>
+  );
+};
+
 export default TodoList;
 
 /* 
