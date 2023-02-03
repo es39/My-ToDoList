@@ -7,6 +7,13 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  & .checked {
+    & .text {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 1.2em;
+    }
+  }
 `;
 
 const Text = styled.div`
@@ -21,7 +28,7 @@ export const Todolistitem = ({ todoList, setTodolist }) => {
       {/* 체크 여부에 따라 CSS 적용을 다르게 하기 위해 삼항연산자 사용 */}
       <Content className={`content ${checked ? "checked" : ""}`}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        <Text>{text}</Text>
+        <div className="text">{text}</div>
       </Content>
     </div>
   );

@@ -1,7 +1,12 @@
 import React from "react";
 
 const TodoInsert = () => {
-  return <div>안녕</div>;
+  return (
+    <div>
+      <input placeholder="todolist add.."></input>
+      <button>추가</button>
+    </div>
+  );
 };
 
 export default TodoInsert;

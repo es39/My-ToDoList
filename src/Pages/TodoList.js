@@ -7,6 +7,15 @@ import Footer from "../Components/Footer";
 import TodoItem from "../Components/TodoItem";
 import TodoInsert from "../Components/TodoInsert";
 
+const AddBtn = styled.button`
+  font-size: 2em;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  z-index: 100;
+  /* bottom: 0; */
+`;
+
 export const TodoList = () => {
   const [todoList, setTodolist] = useState([
     {
@@ -38,6 +47,7 @@ export const TodoList = () => {
       {todoList.map((todoList) => (
         <TodoItem key={todoList.id} todoList={todoList} />
       ))}
+      {/* <AddBtn>+</AddBtn> */}
       <Footer />
     </main>
   );
