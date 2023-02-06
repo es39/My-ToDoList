@@ -1,5 +1,30 @@
 import React from "react";
 import { useState } from "react";
+import styled from "styled-components";
+
+const InputForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  border: none;
+  & focus {
+    outline: 2px solid;
+  }
+  width: 200px;
+  height: 20px;
+  margin: 5px;
+`;
+
+const SubmitBtn = styled.button`
+  border: none;
+  border-color: transparent;
+  cursor: pointer;
+  width: 90px;
+  height: 30px;
+`;
 
 const TodoInsert = ({ addValue }) => {
   const [value, setValue] = useState("");
@@ -17,15 +42,15 @@ const TodoInsert = ({ addValue }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
+      <InputForm onSubmit={handleSubmit}>
+        <Input
           type="text"
           value={value}
           onChange={handleOnChange}
           placeholder="todolist add.."
-        ></input>
-        <button type="submit">추가</button>
-      </form>
+        ></Input>
+        <SubmitBtn type="submit">추가해줘 구리!</SubmitBtn>
+      </InputForm>
     </div>
   );
 };

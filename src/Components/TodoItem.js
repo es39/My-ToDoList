@@ -1,5 +1,4 @@
 import React from "react";
-import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -7,11 +6,15 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  & .checked {
-    & .text {
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .checked {
+    > .text {
       text-decoration: line-through;
       color: gray;
-      font-size: 1.2em;
     }
   }
 `;
@@ -21,20 +24,23 @@ const Text = styled.div`
   color: green;
 `;
 
-export const Todolistitem = ({ todoList, setTodolist, isChecked }) => {
+export const Todolistitem = ({ todoList, isChecked }) => {
   const { id, text, checked } = todoList;
   return (
-    <div className="TodoItem">
+    <Content>
       {/* 체크 여부에 따라 CSS 적용을 다르게 하기 위해 삼항연산자 사용 */}
-      <Content className={`content ${checked ? "checked" : ""}`}>
+      <div className={`content ${checked ? "checked" : ""}`}>
         {checked ? (
-          <MdCheckBox onClick={() => isChecked(id)} />
+          <i
+            className="fa-solid fa-square-check"
+            onClick={() => isChecked(id)}
+          ></i>
         ) : (
-          <MdCheckBoxOutlineBlank onClick={() => isChecked(id)} />
+          <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
         )}
         <div className="text">{text}</div>
-      </Content>
-    </div>
+      </div>
+    </Content>
   );
 };
 

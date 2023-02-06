@@ -16,6 +16,17 @@ const AddBtn = styled.button`
   /* bottom: 0; */
 `;
 
+const TodoMain = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
 export const TodoList = () => {
   const [todoList, setTodolist] = useState([]);
 
@@ -41,7 +52,7 @@ export const TodoList = () => {
   };
 
   return (
-    <main>
+    <TodoMain>
       <Header />
       <TodoInsert addValue={addValue} />
       {todoList.map((todoList) => (
@@ -49,7 +60,7 @@ export const TodoList = () => {
       ))}
       {/* <AddBtn>+</AddBtn> */}
       <Footer />
-    </main>
+    </TodoMain>
   );
 };
 

@@ -20,6 +20,12 @@ const HeaderStyle = styled.header`
 const ModalBtn = styled.button`
   border: none;
   background-color: transparent;
+  position: fixed;
+  right: 0;
+  margin-right: 30px;
+  > i {
+    font-size: 1.3em;
+  }
 `;
 const ImgWrapper = styled.div`
   width: 30px;

@@ -10,6 +10,8 @@ const ModalStyle = styled.div`
 const ModalBtn = styled.button`
   border: none;
   background-color: transparent;
+  font-size: 1.2em;
+  margin-top: 10px;
 `;
 const ModalBack = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -52,7 +54,7 @@ export const Modal = ({ modal, setModal }) => {
             event.stopPropagation();
           }}
         >
-          <ModalBtn onClick={openModalHandler}>x</ModalBtn>
+          <ModalBtn onClick={openModalHandler}>X</ModalBtn>
           <Nav />
         </ModalView>
       </ModalBack>
