@@ -21,13 +21,17 @@ const Text = styled.div`
   color: green;
 `;
 
-export const Todolistitem = ({ todoList, setTodolist }) => {
+export const Todolistitem = ({ todoList, setTodolist, isChecked }) => {
   const { id, text, checked } = todoList;
   return (
     <div className="TodoItem">
       {/* 체크 여부에 따라 CSS 적용을 다르게 하기 위해 삼항연산자 사용 */}
       <Content className={`content ${checked ? "checked" : ""}`}>
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        {checked ? (
+          <MdCheckBox onClick={() => isChecked(id)} />
+        ) : (
+          <MdCheckBoxOutlineBlank onClick={() => isChecked(id)} />
+        )}
         <div className="text">{text}</div>
       </Content>
     </div>
@@ -36,10 +40,12 @@ export const Todolistitem = ({ todoList, setTodolist }) => {
 
 export default Todolistitem;
 
-/* 
+/* TODO:
 Todolistitem.js 구현 목표 체크리스트
-1. 아이콘 삽입 
-2. 아이콘 클릭 시 수정 기능
-3. 아이콘 클릭 시 삭제 기능
-4. styled-components 적용
+1. 체크박스 아이콘 삽입 * (아이콘 종류 수정필요)
+2. 수정 아이콘 삽입
+3. 삭제 아이콘 삽입
+4. 아이콘 클릭 시 수정 기능
+5. 아이콘 클릭 시 삭제 기능
+6. styled-components 적용
 */

@@ -17,35 +17,35 @@ const AddBtn = styled.button`
 `;
 
 export const TodoList = () => {
-  const [todoList, setTodolist] = useState([
-    {
-      id: 1,
-      text: "할 일1",
-      checked: true,
-    },
-    {
-      id: 2,
-      text: "할 일2",
-      checked: true,
-    },
-    {
-      id: 3,
-      text: "할 일3",
-      checked: false,
-    },
-    {
-      id: 4,
-      text: "할 일4",
-      checked: true,
-    },
-  ]);
+  const [todoList, setTodolist] = useState([]);
+
+  const addValue = (text) => {
+    if (text === "") {
+      return alert("입력은 필수다 구리!");
+    } else {
+      const todo = {
+        id: todoList.length + 1,
+        text,
+        checked: false,
+      };
+      setTodolist([todo, ...todoList]);
+    }
+  };
+
+  const isChecked = (id) => {
+    setTodolist((todoList) =>
+      todoList.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  };
 
   return (
     <main>
       <Header />
-      <TodoInsert />
+      <TodoInsert addValue={addValue} />
       {todoList.map((todoList) => (
-        <TodoItem key={todoList.id} todoList={todoList} />
+        <TodoItem key={todoList.id} todoList={todoList} isChecked={isChecked} />
       ))}
       {/* <AddBtn>+</AddBtn> */}
       <Footer />
@@ -59,7 +59,7 @@ export default TodoList;
   TodoList.js 구현 목표 체크리스트
   1. 헤더 컴포넌트 불러오기 * 
   2. 푸터 컴포넌트 불러오기 *
-  3. create 기능 추가
+  3. create 기능 추가 * 
   3-1. 리스트 추가할 시 모달 or 입력창
   4. read 기능 추가 * 
   5. update 기능 추가
