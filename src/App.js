@@ -16,18 +16,14 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <GlobalStyle />
-        <main>
-          <section>
-            <Routes>
-              <Route exact path="/" element={<Main />} />
-              <Route path="/todolist" element={<TodoList />} />
-              <Route path="/yesterdaylist" element={<YesterdayList />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/acnh" element={<ACNH />} />
-              <Route path="/editor" element={<Editor />} />
-            </Routes>
-          </section>
-        </main>
+        <Routes>
+          <Route exact path="/" element={<Main />} />
+          <Route path="/todolist" element={<TodoList />} />
+          <Route path="/yesterdaylist" element={<YesterdayList />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/acnh" element={<ACNH />} />
+          <Route path="/editor" element={<Editor />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

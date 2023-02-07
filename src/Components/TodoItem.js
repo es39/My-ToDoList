@@ -2,26 +2,36 @@ import React from "react";
 import styled from "styled-components";
 
 const Content = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   cursor: pointer;
+  margin: 5px;
   .content {
     display: flex;
     justify-content: center;
     align-items: center;
+    > i {
+      font-size: 1.5em;
+    }
   }
   .checked {
+    color: green;
     > .text {
       text-decoration: line-through;
       color: gray;
     }
   }
+  .text {
+    margin: 5px;
+    font-size: 1.2em;
+    width: 300px;
+    text-align: left;
+  }
 `;
 
-const Text = styled.div`
-  font-size: 1.2em;
-  color: green;
+const RemoveBtn = styled.button`
+  background-color: green;
 `;
 
 export const Todolistitem = ({ todoList, isChecked, onRemove }) => {
@@ -40,7 +50,9 @@ export const Todolistitem = ({ todoList, isChecked, onRemove }) => {
           <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
         )}
         <div className="text">{text}</div>
-        <button onClick={() => onRemove(id)}>삭제</button>
+        <RemoveBtn onClick={() => onRemove(id)}>
+          <i className="fa-solid fa-xmark"></i>
+        </RemoveBtn>
       </div>
     </Content>
   );
@@ -50,10 +62,10 @@ export default Todolistitem;
 
 /* TODO:
 Todolistitem.js 구현 목표 체크리스트
-1. 체크박스 아이콘 삽입 * (아이콘 종류 수정필요)
-2. 수정 아이콘 삽입
-3. 삭제 아이콘 삽입
+1. 체크박스 아이콘 삽입 * (아이콘 종류 수정필요) - 완
+2. 수정 아이콘 삽입 
+3. 삭제 아이콘 삽입 * 
 4. 아이콘 클릭 시 수정 기능
-5. 아이콘 클릭 시 삭제 기능
+5. 아이콘 클릭 시 삭제 기능 *
 6. styled-components 적용
 */

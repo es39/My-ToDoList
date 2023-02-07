@@ -6,15 +6,19 @@ const InputForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 80px;
 `;
 
 const Input = styled.input`
   border: none;
-  & focus {
+  & :focus {
     outline: 2px solid;
   }
   width: 200px;
-  height: 20px;
+  height: 30px;
   margin: 5px;
 `;
 
@@ -24,6 +28,7 @@ const SubmitBtn = styled.button`
   cursor: pointer;
   width: 90px;
   height: 30px;
+  background-color: green;
 `;
 
 const TodoInsert = ({ addValue }) => {
@@ -41,17 +46,15 @@ const TodoInsert = ({ addValue }) => {
   };
 
   return (
-    <div>
-      <InputForm onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          value={value}
-          onChange={handleOnChange}
-          placeholder="todolist add.."
-        ></Input>
-        <SubmitBtn type="submit">추가해줘 구리!</SubmitBtn>
-      </InputForm>
-    </div>
+    <InputForm onSubmit={handleSubmit}>
+      <Input
+        type="text"
+        value={value}
+        onChange={handleOnChange}
+        placeholder="입력해줘 구리!"
+      ></Input>
+      <SubmitBtn type="submit">추가해줘 구리!</SubmitBtn>
+    </InputForm>
   );
 };
 

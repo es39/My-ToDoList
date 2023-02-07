@@ -18,12 +18,17 @@ const AddBtn = styled.button`
 
 const TodoMain = styled.main`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   .list {
     display: flex;
     flex-direction: column;
+    height: auto;
+    position: fixed;
+    top: 150px;
   }
 `;
 
@@ -59,14 +64,16 @@ export const TodoList = () => {
     <TodoMain>
       <Header />
       <TodoInsert addValue={addValue} />
-      {todoList.map((todoList) => (
-        <TodoItem
-          key={todoList.id}
-          todoList={todoList}
-          isChecked={isChecked}
-          onRemove={onRemove}
-        />
-      ))}
+      <div className="list">
+        {todoList.map((todoList) => (
+          <TodoItem
+            key={todoList.id}
+            todoList={todoList}
+            isChecked={isChecked}
+            onRemove={onRemove}
+          />
+        ))}
+      </div>
       {/* <AddBtn>+</AddBtn> */}
       <Footer />
     </TodoMain>
