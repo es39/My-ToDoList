@@ -24,8 +24,9 @@ const Text = styled.div`
   color: green;
 `;
 
-export const Todolistitem = ({ todoList, isChecked }) => {
+export const Todolistitem = ({ todoList, isChecked, onRemove }) => {
   const { id, text, checked } = todoList;
+
   return (
     <Content>
       {/* 체크 여부에 따라 CSS 적용을 다르게 하기 위해 삼항연산자 사용 */}
@@ -39,6 +40,7 @@ export const Todolistitem = ({ todoList, isChecked }) => {
           <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
         )}
         <div className="text">{text}</div>
+        <button onClick={() => onRemove(id)}>삭제</button>
       </div>
     </Content>
   );

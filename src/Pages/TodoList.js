@@ -51,12 +51,21 @@ export const TodoList = () => {
     );
   };
 
+  const onRemove = (id) => {
+    setTodolist((todoList) => todoList.filter((todo) => todo.id != id));
+  };
+
   return (
     <TodoMain>
       <Header />
       <TodoInsert addValue={addValue} />
       {todoList.map((todoList) => (
-        <TodoItem key={todoList.id} todoList={todoList} isChecked={isChecked} />
+        <TodoItem
+          key={todoList.id}
+          todoList={todoList}
+          isChecked={isChecked}
+          onRemove={onRemove}
+        />
       ))}
       {/* <AddBtn>+</AddBtn> */}
       <Footer />
