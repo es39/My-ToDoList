@@ -3,32 +3,63 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavLink = styled.nav`
-  // width: 50px;
-  /* height: 50px; */
-  /* position: fixed; */
-  // right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 50px;
+  height: 100%;
   > * {
     text-decoration: none;
+    margin: 20px;
+    background-color: #10ba00;
   }
   @font-face {
     font-family: "font";
     src: url("../Font/Asia신디나루M.ttf") format("truetype");
+  }
+  > div {
+    width: 100%;
+    background-color: #10ba00;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    > a {
+      text-decoration: none;
+      color: black;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+`;
+
+const LinkWrapper = styled.div`
+  width: 100%;
+  background-color: #10ba00;
+  font-size: 1.5em;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > a {
+    text-decoration: none;
+    color: black;
   }
 `;
 
 export const Nav = () => {
   return (
     <NavLink>
-      <Link to="/todolist">오늘의 할 일 </Link>
-      <Link to="/yesterdaylist">어제 했던 일 </Link>
-      <Link to="/calendar">달력 보기 </Link>
-      <Link to="/acnh">모동숲 </Link>
-      <Link to="/editor">만든 사람</Link>
+      <div>
+        <Link to="/todolist">오늘의 할 일 </Link>
+        <Link to="/yesterdaylist">어제 했던 일 </Link>
+        <Link to="/calendar">달력 보기 </Link>
+        <Link to="/acnh">모동숲 </Link>
+        <Link to="/editor">만든 사람</Link>
+      </div>
     </NavLink>
   );
 };
