@@ -6,14 +6,23 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import TodoItem from "../Components/TodoItem";
 import TodoInsert from "../Components/TodoInsert";
+import TodoInsertModal from "../Components/TodoInsertModal";
 
 const AddBtn = styled.button`
   font-size: 2em;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   position: fixed;
+  bottom: 50px;
+  background-color: transparent;
+  border: none;
   z-index: 100;
-  /* bottom: 0; */
+  color: #10ba00;
+  right: -5px;
+  cursor: pointer;
+  > i {
+    font-size: 1.4em;
+  }
 `;
 
 const TodoMain = styled.main`
@@ -30,9 +39,14 @@ const TodoMain = styled.main`
     position: fixed;
     top: 150px;
   }
+  > .guri {
+    position: absolute;
+    top: 80px;
+  }
 `;
 
 export const TodoList = () => {
+  const [modal, setModal] = useState(false);
   const [todoList, setTodolist] = useState([]);
 
   const addValue = (text) => {
@@ -44,7 +58,7 @@ export const TodoList = () => {
         text,
         checked: false,
       };
-      setTodolist([todo, ...todoList]);
+      setTodolist([...todoList, todo]);
     }
   };
 
@@ -56,25 +70,32 @@ export const TodoList = () => {
     );
   };
 
-  const onRemove = (id) => {
-    setTodolist((todoList) => todoList.filter((todo) => todo.id != id));
+  const isModal = () => {
+    setModal(!modal);
   };
 
   return (
     <TodoMain>
       <Header />
-      <TodoInsert addValue={addValue} />
+      <div className="guri">할 일을 작성해줘 구리!</div>
+      {modal ? <TodoInsertModal addValue={addValue} isModal={isModal} /> : null}
       <div className="list">
+        {/* <ul> */}
         {todoList.map((todoList) => (
+          // <li>
           <TodoItem
             key={todoList.id}
             todoList={todoList}
+            setTodolist={setTodolist}
             isChecked={isChecked}
-            onRemove={onRemove}
           />
+          // </li>
         ))}
+        {/* </ul> */}
       </div>
-      {/* <AddBtn>+</AddBtn> */}
+      <AddBtn onClick={isModal}>
+        <i className="fa-solid fa-circle-plus"></i>
+      </AddBtn>
       <Footer />
     </TodoMain>
   );
@@ -87,11 +108,11 @@ export default TodoList;
   1. 헤더 컴포넌트 불러오기 * 
   2. 푸터 컴포넌트 불러오기 *
   3. create 기능 추가 * 
-  3-1. 리스트 추가할 시 모달 or 입력창
+  3-1. 리스트 추가할 시 모달 or 입력창 *
   4. read 기능 추가 * 
   5. update 기능 추가
-  6. delete 기능 추가 
-  7. 체크박스 기능 추가
-  7-1. 체크되었을 경우, 안되었을 경우 구분
+  6. delete 기능 추가 *
+  7. 체크박스 기능 추가 *
+  7-1. 체크되었을 경우, 안되었을 경우 구분 *
   8. styled-components 적용 
 */
