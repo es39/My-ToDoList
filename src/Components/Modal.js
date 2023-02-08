@@ -11,7 +11,8 @@ const ModalBtn = styled.button`
   border: none;
   background-color: transparent;
   font-size: 1.2em;
-  margin-top: 10px;
+  margin-top: 5px;
+  position: fixed;
 `;
 const ModalBack = styled.div`
   background: rgba(0, 0, 0, 0.5);
@@ -70,5 +71,5 @@ TODO:
   1. 모달 배경 구현 *
   2. 모달창 구현 * 
   3. 클릭 시 창이 보이도록 클릭 이벤트로 기능 구현 * 
-  4. styled-components 적용  
+  4. styled-components 적용 * 
 */

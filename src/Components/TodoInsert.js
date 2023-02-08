@@ -10,6 +10,7 @@ const InputForm = styled.form`
   left: 0;
   right: 0;
   top: 80px;
+  z-index: 0;
 `;
 
 const Input = styled.input`
@@ -28,7 +29,7 @@ const SubmitBtn = styled.button`
   cursor: pointer;
   width: 90px;
   height: 30px;
-  background-color: green;
+  background-color: #10ba00;
 `;
 
 const TodoInsert = ({ addValue }) => {

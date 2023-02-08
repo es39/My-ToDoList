@@ -13,10 +13,7 @@ const NavLink = styled.nav`
     margin: 20px;
     background-color: #10ba00;
   }
-  @font-face {
-    font-family: "font";
-    src: url("../Font/Asia신디나루M.ttf") format("truetype");
-  }
+  /* font-family: "../Font/Asia신디나루M.ttf"; */
   > div {
     width: 100%;
     background-color: #10ba00;
@@ -33,20 +30,6 @@ const NavLink = styled.nav`
       justify-content: center;
       align-items: center;
     }
-  }
-`;
-
-const LinkWrapper = styled.div`
-  width: 100%;
-  background-color: #10ba00;
-  font-size: 1.5em;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  > a {
-    text-decoration: none;
-    color: black;
   }
 `;
 
