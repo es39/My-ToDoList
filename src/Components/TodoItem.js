@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -16,7 +16,7 @@ const Content = styled.div`
     }
   }
   .checked {
-    color: green;
+    color: #10ba00;
     > .text {
       text-decoration: line-through;
       color: gray;
@@ -25,17 +25,27 @@ const Content = styled.div`
   .text {
     margin: 5px;
     font-size: 1.2em;
-    width: 300px;
+    width: 250px;
     text-align: left;
   }
 `;
 
 const RemoveBtn = styled.button`
-  background-color: green;
+  background-color: #10ba00;
+  margin: 5px;
 `;
 
-export const Todolistitem = ({ todoList, isChecked, onRemove }) => {
+export const Todolistitem = ({ todoList, setTodolist, isChecked }) => {
   const { id, text, checked } = todoList;
+  const [edit, setEdit] = useState(false);
+
+  const onRemove = (id) => {
+    setTodolist((todoList) => todoList.filter((todo) => todo.id !== id));
+  };
+
+  const isEdit = () => {
+    setEdit(!edit);
+  };
 
   return (
     <Content>
@@ -50,6 +60,10 @@ export const Todolistitem = ({ todoList, isChecked, onRemove }) => {
           <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
         )}
         <div className="text">{text}</div>
+
+        {/* <button className="edit" onClick={isEdit}>
+          <i className="fa-solid fa-pencil"></i>
+        </button> */}
         <RemoveBtn onClick={() => onRemove(id)}>
           <i className="fa-solid fa-xmark"></i>
         </RemoveBtn>
