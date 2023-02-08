@@ -8,6 +8,7 @@ const NavLink = styled.nav`
   align-items: center;
   flex-direction: column;
   height: 100%;
+  margin-bottom: 10px;
   > * {
     text-decoration: none;
     margin: 20px;
@@ -16,7 +17,7 @@ const NavLink = styled.nav`
   /* font-family: "../Font/Asia신디나루M.ttf"; */
   > div {
     width: 100%;
-    background-color: #10ba00;
+    background-color: #adeca7;
     font-size: 1.5em;
     display: flex;
     justify-content: center;
