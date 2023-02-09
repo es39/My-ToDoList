@@ -55,8 +55,26 @@ const InputForm = styled.form`
   }
 `;
 
-const TodoInsert = ({ addValue, isModal, select, onEdit }) => {
+const TodoInsert = ({ addValue, isModal, select }) => {
   const [value, setValue] = useState("");
+
+  /* 할 일 목록 수정 요청 */
+  const handleEdit = () => {
+    fetch(`http://localhost:3001/todo/${select.id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        text: value,
+        checked: select.checked,
+      }),
+    })
+      .then(() => {
+        setValue("");
+        isModal();
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   // input이 변경될 때마다 실행
   const handleOnChange = (e) => {
@@ -79,16 +97,7 @@ const TodoInsert = ({ addValue, isModal, select, onEdit }) => {
   return (
     <div>
       <InputBackground onClick={isModal}>
-        <InputForm
-          onClick={(e) => e.stopPropagation()}
-          onSubmit={
-            select
-              ? () => {
-                  onEdit(select.id, value);
-                }
-              : handleSubmit
-          }
-        >
+        <InputForm onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
           <input
             onClick={(event) => {
               event.stopPropagation();
@@ -98,7 +107,7 @@ const TodoInsert = ({ addValue, isModal, select, onEdit }) => {
             onChange={handleOnChange}
           ></input>
           {select ? (
-            <div className="edit" onClick={() => onEdit(select.id, value)}>
+            <div className="edit" onClick={handleEdit}>
               <i className="fa-solid fa-pencil"></i>
             </div>
           ) : (
