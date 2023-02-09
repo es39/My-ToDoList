@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -7,21 +7,23 @@ import Footer from "../Components/Footer";
 import TodoItem from "../Components/TodoItem";
 import TodoInsert from "../Components/TodoInsert";
 import TodoInsertModal from "../Components/TodoInsertModal";
+import useFetch from "../util/useFetch";
 
 const AddBtn = styled.button`
   font-size: 2em;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: fixed;
   bottom: 50px;
   background-color: transparent;
   border: none;
   z-index: 100;
   color: #10ba00;
-  right: -5px;
+  top: 65px;
+  right: 10px;
   cursor: pointer;
   > i {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 `;
 
@@ -42,12 +44,17 @@ const TodoMain = styled.main`
   > .guri {
     position: absolute;
     top: 80px;
+    font-size: 1.5em;
   }
 `;
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [todoList, setTodolist] = useState([]);
+  const [value, setValue] = useState("");
+  const [select, setSelect] = useState(null);
+
+  // const data = useFetch("http://localhost:3001/todo");
 
   const addValue = (text) => {
     if (text === "") {
@@ -59,6 +66,16 @@ export const TodoList = () => {
         checked: false,
       };
       setTodolist([...todoList, todo]);
+      // fetch("http://localhost:3001/todo", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ text, checked: false }),
+      // })
+      //   .then((data) => {
+      //     // window.location.reload();
+      //     console.log(data);
+      //   })
+      //   .catch((err) => console.log(err));
     }
   };
 
@@ -71,14 +88,37 @@ export const TodoList = () => {
   };
 
   const isModal = () => {
+    if (select) {
+      setSelect(null);
+    }
     setModal(!modal);
+  };
+
+  const onChangeSelect = (todo) => {
+    setSelect(todo);
+  };
+
+  const onEdit = (id, text) => {
+    isModal();
+    setTodolist((todoList) =>
+      todoList.map((todo) => (todo.id === id ? { ...todo, text } : todo))
+    );
   };
 
   return (
     <TodoMain>
       <Header />
       <div className="guri">할 일을 작성해줘 구리!</div>
-      {modal ? <TodoInsertModal addValue={addValue} isModal={isModal} /> : null}
+      {modal ? (
+        <TodoInsertModal
+          addValue={addValue}
+          isModal={isModal}
+          value={value}
+          setValue={setValue}
+          select={select}
+          onEdit={onEdit}
+        />
+      ) : null}
       <div className="list">
         {/* <ul> */}
         {todoList.map((todoList) => (
@@ -88,6 +128,8 @@ export const TodoList = () => {
             todoList={todoList}
             setTodolist={setTodolist}
             isChecked={isChecked}
+            isModal={isModal}
+            onChangeSelect={onChangeSelect}
           />
           // </li>
         ))}
