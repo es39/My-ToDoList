@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -35,17 +36,28 @@ const RemoveBtn = styled.button`
   margin: 5px;
 `;
 
-export const Todolistitem = ({ todoList, setTodolist, isChecked }) => {
+export const Todolistitem = ({
+  todoList,
+  setTodolist,
+  isChecked,
+  isModal,
+  onChangeSelect,
+}) => {
   const { id, text, checked } = todoList;
   const [edit, setEdit] = useState(false);
 
   const onRemove = (id) => {
     setTodolist((todoList) => todoList.filter((todo) => todo.id !== id));
-  };
-
-  const isEdit = () => {
-    setEdit(!edit);
-  };
+  //   fetch(`http://localhost:3001/todo/${id}`, {
+  //     method: "DELETE",
+  //     headers: { "Content-type": "application/json" },
+  //   })
+  //     .then((data) => {
+  //       console.log(data);
+  //       //window.location.reload();
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <Content>
@@ -59,9 +71,23 @@ export const Todolistitem = ({ todoList, setTodolist, isChecked }) => {
         ) : (
           <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
         )}
-        <div className="text">{text}</div>
+        <div
+          className="text"
+          onClick={() => {
+            isModal();
+            onChangeSelect(todoList);
+          }}
+        >
+          {text}
+        </div>
 
-        {/* <button className="edit" onClick={isEdit}>
+        {/* <button
+          className="edit"
+          onClick={() => {
+            onChangeEdit(todoList);
+            isEdit();
+          }}
+        >
           <i className="fa-solid fa-pencil"></i>
         </button> */}
         <RemoveBtn onClick={() => onRemove(id)}>
@@ -77,7 +103,7 @@ export default Todolistitem;
 /* TODO:
 Todolistitem.js 구현 목표 체크리스트
 1. 체크박스 아이콘 삽입 * (아이콘 종류 수정필요) - 완
-2. 수정 아이콘 삽입 
+2. 수정 아이콘 삽입 - 클릭 시 수정으로 대체
 3. 삭제 아이콘 삽입 * 
 4. 아이콘 클릭 시 수정 기능
 5. 아이콘 클릭 시 삭제 기능 *
