@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import TodoItem from "../Components/TodoItem";
 import TodoInsert from "../Components/TodoInsert";
 import TodoInsertModal from "../Components/TodoInsertModal";
-import useFetch from "../util/useFetch";
+// import useFetch from "../util/useFetch";
 
 const AddBtn = styled.button`
   font-size: 2em;
