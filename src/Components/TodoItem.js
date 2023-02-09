@@ -48,6 +48,7 @@ export const Todolistitem = ({
 
   const onRemove = (id) => {
     setTodolist((todoList) => todoList.filter((todo) => todo.id !== id));
+  };
   //   fetch(`http://localhost:3001/todo/${id}`, {
   //     method: "DELETE",
   //     headers: { "Content-type": "application/json" },
