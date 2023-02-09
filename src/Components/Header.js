@@ -24,7 +24,8 @@ const ModalBtn = styled.button`
   right: 0;
   margin-right: 30px;
   > i {
-    font-size: 1.3em;
+    font-size: 1.5em;
+    cursor: pointer;
   }
 `;
 const ImgWrapper = styled.div`
@@ -34,6 +35,9 @@ const ImgWrapper = styled.div`
   position: fixed;
   left: 0;
   margin-left: 20px;
+  > i {
+    cursor: pointer;
+  }
 `;
 
 export const Header = () => {
