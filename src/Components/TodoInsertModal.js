@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -55,7 +55,7 @@ const InputForm = styled.form`
   }
 `;
 
-const TodoInsert = ({ addValue, isModal }) => {
+const TodoInsert = ({ addValue, isModal, select, onEdit }) => {
   const [value, setValue] = useState("");
 
   // input이 변경될 때마다 실행
@@ -70,10 +70,25 @@ const TodoInsert = ({ addValue, isModal }) => {
     isModal();
   };
 
+  useEffect(() => {
+    if (select) {
+      setValue(select.text);
+    }
+  }, [select]);
+
   return (
     <div>
       <InputBackground onClick={isModal}>
-        <InputForm onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
+        <InputForm
+          onClick={(e) => e.stopPropagation()}
+          onSubmit={
+            select
+              ? () => {
+                  onEdit(select.id, value);
+                }
+              : handleSubmit
+          }
+        >
           <input
             onClick={(event) => {
               event.stopPropagation();
@@ -82,7 +97,13 @@ const TodoInsert = ({ addValue, isModal }) => {
             value={value}
             onChange={handleOnChange}
           ></input>
-          <button type="submit">추가해줘 구리!</button>
+          {select ? (
+            <div className="edit" onClick={() => onEdit(select.id, value)}>
+              <i className="fa-solid fa-pencil"></i>
+            </div>
+          ) : (
+            <button type="submit">추가해줘 구리!</button>
+          )}
         </InputForm>
       </InputBackground>
     </div>
