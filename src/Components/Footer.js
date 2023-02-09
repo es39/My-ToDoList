@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const FooterStyle= styled.footer`
+const FooterStyle = styled.footer`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -15,17 +15,13 @@ const FooterStyle= styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1;
-`
+  z-index: 0;
+`;
 
 export const Footer = () => {
-    return (
-      <FooterStyle>
-        @ 2023 Sunny Day
-      </FooterStyle>
-    );
-  }
-  
+  return <FooterStyle>@ 2023 Sunny Day</FooterStyle>;
+};
+
 export default Footer;
 
 /*
