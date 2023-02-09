@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import TodoItem from "../Components/TodoItem";
 import TodoInsert from "../Components/TodoInsert";
 import TodoInsertModal from "../Components/TodoInsertModal";
-// import useFetch from "../util/useFetch";
+import useFetch from "../util/useFetch";
 
 const AddBtn = styled.button`
   font-size: 2em;
@@ -50,41 +50,26 @@ const TodoMain = styled.main`
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
-  const [todoList, setTodolist] = useState([]);
-  const [value, setValue] = useState("");
   const [select, setSelect] = useState(null);
 
-  // const data = useFetch("http://localhost:3001/todo");
+  const data = useFetch("http://localhost:3001/todo");
 
+  /* 포스트 요청 */
   const addValue = (text) => {
     if (text === "") {
       return alert("입력은 필수다 구리!");
     } else {
-      const todo = {
-        id: todoList.length + 1,
-        text,
-        checked: false,
-      };
-      setTodolist([...todoList, todo]);
-      // fetch("http://localhost:3001/todo", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ text, checked: false }),
-      // })
-      //   .then((data) => {
-      //     // window.location.reload();
-      //     console.log(data);
-      //   })
-      //   .catch((err) => console.log(err));
+      fetch("http://localhost:3001/todo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, checked: false }),
+      })
+        .then((data) => {
+          window.location.reload();
+          console.log(data);
+        })
+        .catch((err) => console.log(err));
     }
-  };
-
-  const isChecked = (id) => {
-    setTodolist((todoList) =>
-      todoList.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
-      )
-    );
   };
 
   const isModal = () => {
@@ -98,13 +83,6 @@ export const TodoList = () => {
     setSelect(todo);
   };
 
-  const onEdit = (id, text) => {
-    isModal();
-    setTodolist((todoList) =>
-      todoList.map((todo) => (todo.id === id ? { ...todo, text } : todo))
-    );
-  };
-
   return (
     <TodoMain>
       <Header />
@@ -113,27 +91,22 @@ export const TodoList = () => {
         <TodoInsertModal
           addValue={addValue}
           isModal={isModal}
-          value={value}
-          setValue={setValue}
           select={select}
-          onEdit={onEdit}
         />
       ) : null}
       <div className="list">
-        {/* <ul> */}
-        {todoList.map((todoList) => (
-          // <li>
-          <TodoItem
-            key={todoList.id}
-            todoList={todoList}
-            setTodolist={setTodolist}
-            isChecked={isChecked}
-            isModal={isModal}
-            onChangeSelect={onChangeSelect}
-          />
-          // </li>
-        ))}
-        {/* </ul> */}
+        {data ? (
+          data.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              isModal={isModal}
+              onChangeSelect={onChangeSelect}
+            />
+          ))
+        ) : (
+          <div> 로딩중 </div>
+        )}
       </div>
       <AddBtn onClick={isModal}>
         <i className="fa-solid fa-circle-plus"></i>
