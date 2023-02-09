@@ -1,5 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -36,61 +36,56 @@ const RemoveBtn = styled.button`
   margin: 5px;
 `;
 
-export const Todolistitem = ({
-  todoList,
-  setTodolist,
-  isChecked,
-  isModal,
-  onChangeSelect,
-}) => {
-  const { id, text, checked } = todoList;
-  const [edit, setEdit] = useState(false);
+export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
+  const { id, text, checked } = todo;
+  const [isChecked, setIsChecked] = useState(checked);
 
+  /* 삭제 요청 */
   const onRemove = (id) => {
-    setTodolist((todoList) => todoList.filter((todo) => todo.id !== id));
+    fetch(`http://localhost:3001/todo/${id}`, {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+    })
+      .then((data) => {
+        console.log(data);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
   };
-  //   fetch(`http://localhost:3001/todo/${id}`, {
-  //     method: "DELETE",
-  //     headers: { "Content-type": "application/json" },
-  //   })
-  //     .then((data) => {
-  //       console.log(data);
-  //       //window.location.reload();
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+
+  /* 체크박스 수정 요청 */
+  useEffect(() => {
+    fetch(`http://localhost:3001/todo/${id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        checked: isChecked,
+      }),
+    }).catch((err) => console.log(err));
+  }, [isChecked]);
+
+  const handleCheck = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <Content>
       {/* 체크 여부에 따라 CSS 적용을 다르게 하기 위해 삼항연산자 사용 */}
-      <div className={`content ${checked ? "checked" : ""}`}>
-        {checked ? (
-          <i
-            className="fa-solid fa-square-check"
-            onClick={() => isChecked(id)}
-          ></i>
+      <div className={`content ${isChecked ? "checked" : ""}`}>
+        {isChecked ? (
+          <i className="fa-solid fa-square-check" onClick={handleCheck}></i>
         ) : (
-          <i className="fa-regular fa-square" onClick={() => isChecked(id)}></i>
+          <i className="fa-regular fa-square" onClick={handleCheck}></i>
         )}
         <div
           className="text"
           onClick={() => {
             isModal();
-            onChangeSelect(todoList);
+            onChangeSelect(todo);
           }}
         >
           {text}
         </div>
-
-        {/* <button
-          className="edit"
-          onClick={() => {
-            onChangeEdit(todoList);
-            isEdit();
-          }}
-        >
-          <i className="fa-solid fa-pencil"></i>
-        </button> */}
         <RemoveBtn onClick={() => onRemove(id)}>
           <i className="fa-solid fa-xmark"></i>
         </RemoveBtn>
@@ -99,7 +94,7 @@ export const Todolistitem = ({
   );
 };
 
-export default Todolistitem;
+export default TodoItem;
 
 /* TODO:
 Todolistitem.js 구현 목표 체크리스트
