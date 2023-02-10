@@ -37,11 +37,8 @@ const InputForm = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  > input {
-    border-bottom: 1px solid #adeca7;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+  > textarea {
+    border: 1px solid #adeca7;
     outline: none;
     margin: 5px;
     padding: 5px;
@@ -98,14 +95,14 @@ const TodoInsert = ({ addValue, isModal, select }) => {
     <div>
       <InputBackground onClick={isModal}>
         <InputForm onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
-          <input
+          <textarea
             onClick={(event) => {
               event.stopPropagation();
             }}
             placeholder="할 일을 입력해줘 구리.."
             value={value}
             onChange={handleOnChange}
-          ></input>
+          ></textarea>
           {select ? (
             <div className="edit" onClick={handleEdit}>
               <i className="fa-solid fa-pencil"></i>
