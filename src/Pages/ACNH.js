@@ -1,17 +1,28 @@
-import React from "react"
+import React from "react";
 import styled from "styled-components";
 
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+
+const ImgWrapper = styled.div`
+  width: 400px;
+  height: 500px;
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 export default function ACNH() {
-    return (
-        <main>
-            <Header />
-            <div>i'm acnh</div>
-            <Footer />
-        </main>
-    )
+  return (
+    <main>
+      <Header />
+      <ImgWrapper>
+        <img src="./moneyguri.png" alt="모동숲 이미지" />
+      </ImgWrapper>
+      <Footer />
+    </main>
+  );
 }
 
 /*
