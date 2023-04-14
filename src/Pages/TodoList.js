@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import TodoItem from "../Components/TodoItem";
-import TodoInsert from "../Components/TodoInsert";
+import Header from "../Components/Header";
 import TodoInsertModal from "../Components/TodoInsertModal";
+import TodoItem from "../Components/TodoItem";
 import useFetch from "../util/useFetch";
 
 const AddBtn = styled.button`
@@ -52,14 +50,14 @@ export const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState(null);
 
-  const data = useFetch("http://localhost:3001/todo");
+  const data = useFetch("http://localhost:4000/todo");
 
   /* 포스트 요청 */
   const addValue = (text) => {
     if (text === "") {
       return alert("입력은 필수다 구리!");
     } else {
-      fetch("http://localhost:3001/todo", {
+      fetch("http://localhost:4000/todo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, checked: false }),
