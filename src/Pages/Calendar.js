@@ -1,17 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-
-const ImgWrapper = styled.div`
-  width: 400px;
-  height: 500px;
-  > img {
-    width: 100%;
-    height: 100%;
-  }
-`;
+import Header from "../Components/Header";
 
 export const Calendar = () => {
   return (
@@ -26,6 +16,15 @@ export const Calendar = () => {
 };
 
 export default Calendar;
+
+const ImgWrapper = styled.div`
+  width: 400px;
+  height: 500px;
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 /*
   Calendar.js 구현 목표 체크리스트

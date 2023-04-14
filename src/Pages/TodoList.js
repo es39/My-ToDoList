@@ -1,50 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import TodoInsertModal from "../Components/TodoInsertModal";
 import TodoItem from "../Components/TodoItem";
 import useFetch from "../util/useFetch";
-
-const AddBtn = styled.button`
-  font-size: 2em;
-  width: 60px;
-  height: 60px;
-  position: fixed;
-  bottom: 50px;
-  background-color: transparent;
-  border: none;
-  z-index: 100;
-  color: #10ba00;
-  top: 65px;
-  right: 10px;
-  cursor: pointer;
-  > i {
-    font-size: 1.3em;
-  }
-`;
-
-const TodoMain = styled.main`
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  .list {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    position: fixed;
-    top: 150px;
-  }
-  > .guri {
-    position: absolute;
-    top: 80px;
-    font-size: 1.5em;
-  }
-`;
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
@@ -115,6 +75,45 @@ export const TodoList = () => {
 };
 
 export default TodoList;
+
+const AddBtn = styled.button`
+  font-size: 2em;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 50px;
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  color: #10ba00;
+  top: 65px;
+  right: 10px;
+  cursor: pointer;
+  > i {
+    font-size: 1.3em;
+  }
+`;
+
+const TodoMain = styled.main`
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .list {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: fixed;
+    top: 150px;
+  }
+  > .guri {
+    position: absolute;
+    top: 80px;
+    font-size: 1.5em;
+  }
+`;
 
 /* 
   TodoList.js 구현 목표 체크리스트

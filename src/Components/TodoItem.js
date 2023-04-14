@@ -1,40 +1,4 @@
-import { type } from "@testing-library/user-event/dist/type";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-
-const Content = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  cursor: pointer;
-  margin: 5px;
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    > i {
-      font-size: 1.5em;
-    }
-  }
-  .checked {
-    color: #10ba00;
-    > .text {
-      text-decoration: line-through;
-      color: gray;
-    }
-  }
-  .text {
-    margin: 5px;
-    font-size: 1.2em;
-    width: 250px;
-    text-align: left;
-  }
-`;
-
-const RemoveBtn = styled.button`
-  background-color: #10ba00;
-  margin: 5px;
-`;
 
 export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
   const { id, text, checked } = todo;
@@ -42,7 +6,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 삭제 요청 */
   const onRemove = (id) => {
-    fetch(`http://localhost:3001/todo/${id}`, {
+    fetch(`http://localhost:4000/todo/${id}`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
     })
@@ -55,7 +19,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 체크박스 수정 요청 */
   useEffect(() => {
-    fetch(`http://localhost:3001/todo/${id}`, {
+    fetch(`http://localhost:4000/todo/${id}`, {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -95,6 +59,40 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 };
 
 export default TodoItem;
+
+const Content = styled.div`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  cursor: pointer;
+  margin: 5px;
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > i {
+      font-size: 1.5em;
+    }
+  }
+  .checked {
+    color: #10ba00;
+    > .text {
+      text-decoration: line-through;
+      color: gray;
+    }
+  }
+  .text {
+    margin: 5px;
+    font-size: 1.2em;
+    width: 250px;
+    text-align: left;
+  }
+`;
+
+const RemoveBtn = styled.button`
+  background-color: #10ba00;
+  margin: 5px;
+`;
 
 /* TODO:
 Todolistitem.js 구현 목표 체크리스트

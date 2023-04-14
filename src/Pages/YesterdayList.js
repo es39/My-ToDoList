@@ -1,40 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-
-const Title = styled.div`
-  position: absolute;
-  top: 80px;
-  font-size: 1.5em;
-`;
-
-const YesterdayList = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  position: absolute;
-  top: 150px;
-  flex-direction: column;
-  > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    /* width: 500px; */
-    > i {
-      color: #10ba00;
-      font-size: 1.5em;
-    }
-    color: gray;
-    > div {
-      margin: 5px;
-      font-size: 1.2em;
-      text-decoration: line-through;
-    }
-  }
-`;
+import Header from "../Components/Header";
 
 export default function Yesterdaylist() {
   return (
@@ -67,6 +35,38 @@ export default function Yesterdaylist() {
     </>
   );
 }
+
+const Title = styled.div`
+  position: absolute;
+  top: 80px;
+  font-size: 1.5em;
+`;
+
+const YesterdayList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  top: 150px;
+  flex-direction: column;
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    /* width: 500px; */
+    > i {
+      color: #10ba00;
+      font-size: 1.5em;
+    }
+    color: gray;
+    > div {
+      margin: 5px;
+      font-size: 1.2em;
+      text-decoration: line-through;
+    }
+  }
+`;
 
 /*
   YesterdayList.js 구현 목표 체크리스트

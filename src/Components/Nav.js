@@ -1,6 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+
+export const Nav = () => {
+  return (
+    <NavLink>
+      <div>
+        <Link to="/todolist">오늘의 할 일 </Link>
+        <Link to="/yesterdaylist">어제 했던 일 </Link>
+        <Link to="/calendar">달력 보기 </Link>
+        <Link to="/acnh">모동숲 </Link>
+        <Link to="/editor">만든 사람</Link>
+      </div>
+    </NavLink>
+  );
+};
+
+export default Nav;
 
 const NavLink = styled.nav`
   display: flex;
@@ -33,22 +48,6 @@ const NavLink = styled.nav`
     }
   }
 `;
-
-export const Nav = () => {
-  return (
-    <NavLink>
-      <div>
-        <Link to="/todolist">오늘의 할 일 </Link>
-        <Link to="/yesterdaylist">어제 했던 일 </Link>
-        <Link to="/calendar">달력 보기 </Link>
-        <Link to="/acnh">모동숲 </Link>
-        <Link to="/editor">만든 사람</Link>
-      </div>
-    </NavLink>
-  );
-};
-
-export default Nav;
 
 /*
   Nav.js 구현 목표 체크리스트

@@ -1,63 +1,11 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import styled from "styled-components";
-
-const InputBackground = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 900;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-`;
-
-const InputForm = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  width: 320px;
-  height: 320px;
-  background-color: white;
-  border-radius: 20px;
-  border-style: none;
-  box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  > textarea {
-    border: 1px solid #adeca7;
-    outline: none;
-    margin: 5px;
-    padding: 5px;
-  }
-  > button {
-    cursor: pointer;
-    background-color: #adeca7;
-    border: none;
-    border-radius: 20px;
-    padding: 5px;
-  }
-`;
+import React, { useEffect, useState } from "react";
 
 const TodoInsert = ({ addValue, isModal, select }) => {
   const [value, setValue] = useState("");
 
   /* 할 일 목록 수정 요청 */
   const handleEdit = () => {
-    fetch(`http://localhost:3001/todo/${select.id}`, {
+    fetch(`http://localhost:4000/todo/${select.id}`, {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -117,6 +65,56 @@ const TodoInsert = ({ addValue, isModal, select }) => {
 };
 
 export default TodoInsert;
+
+const InputBackground = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+`;
+
+const InputForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 320px;
+  height: 320px;
+  background-color: white;
+  border-radius: 20px;
+  border-style: none;
+  box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  > textarea {
+    border: 1px solid #adeca7;
+    outline: none;
+    margin: 5px;
+    padding: 5px;
+  }
+  > button {
+    cursor: pointer;
+    background-color: #adeca7;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+  }
+`;
 
 /* TODO:
 1. form 형태 추가 *

@@ -1,8 +1,27 @@
-import React from "react";
-import styled from "styled-components";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Modal from "./Modal";
+
+export const Header = () => {
+  const [modal, setModal] = useState(false);
+  const openModalHandler = () => {
+    setModal(!modal);
+  };
+
+  return (
+    <HeaderStyle>
+      <ImgWrapper>
+        <img src="logo2.png" alt="동물의 숲 나뭇잎 로고" />
+      </ImgWrapper>
+      <ModalBtn onClick={openModalHandler}>
+        <i className="fa-solid fa-bars"></i>
+      </ModalBtn>
+      {modal === true ? <Modal modal={modal} setModal={setModal} /> : null}
+    </HeaderStyle>
+  );
+};
+
+export default Header;
 
 const HeaderStyle = styled.header`
   display: flex;
@@ -39,27 +58,6 @@ const ImgWrapper = styled.div`
     cursor: pointer;
   }
 `;
-
-export const Header = () => {
-  const [modal, setModal] = useState(false);
-  const openModalHandler = () => {
-    setModal(!modal);
-  };
-
-  return (
-    <HeaderStyle>
-      <ImgWrapper>
-        <img src="logo2.png" alt="동물의 숲 나뭇잎 로고" />
-      </ImgWrapper>
-      <ModalBtn onClick={openModalHandler}>
-        <i className="fa-solid fa-bars"></i>
-      </ModalBtn>
-      {modal === true ? <Modal modal={modal} setModal={setModal} /> : null}
-    </HeaderStyle>
-  );
-};
-
-export default Header;
 
 /* 
   Header.js 구현 목표 체크리스트

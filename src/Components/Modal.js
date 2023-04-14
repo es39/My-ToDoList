@@ -1,6 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 import Nav from "./Nav";
+
+export const Modal = ({ modal, setModal }) => {
+  const openModalHandler = () => {
+    setModal(!modal);
+  };
+
+  return (
+    <ModalStyle>
+      <ModalBack onClick={openModalHandler}>
+        <ModalView
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+        >
+          <ModalBtn onClick={openModalHandler}>X</ModalBtn>
+          <Nav />
+        </ModalView>
+      </ModalBack>
+    </ModalStyle>
+  );
+};
+
+export default Modal;
 
 const ModalStyle = styled.div`
   display: flex;
@@ -41,29 +63,6 @@ export const ModalView = styled.div.attrs((props) => ({
   right: 0;
   z-index: 999;
 `;
-
-export const Modal = ({ modal, setModal }) => {
-  const openModalHandler = () => {
-    setModal(!modal);
-  };
-
-  return (
-    <ModalStyle>
-      <ModalBack onClick={openModalHandler}>
-        <ModalView
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
-        >
-          <ModalBtn onClick={openModalHandler}>X</ModalBtn>
-          <Nav />
-        </ModalView>
-      </ModalBack>
-    </ModalStyle>
-  );
-};
-
-export default Modal;
 
 /* 
 TODO:

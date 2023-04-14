@@ -1,5 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+
+export const Footer = () => {
+  return <FooterStyle>@ 2023 Sunny Day</FooterStyle>;
+};
+
+export default Footer;
 
 const FooterStyle = styled.footer`
   position: fixed;
@@ -17,12 +22,6 @@ const FooterStyle = styled.footer`
   align-items: center;
   z-index: 0;
 `;
-
-export const Footer = () => {
-  return <FooterStyle>@ 2023 Sunny Day</FooterStyle>;
-};
-
-export default Footer;
 
 /*
   Footer.js 구현 목표 체크리스트

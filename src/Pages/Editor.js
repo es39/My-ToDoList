@@ -1,27 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-
-const Introduction = styled.div`
-  > h3 {
-    margin: 20px;
-  }
-  > div {
-    margin: 20px;
-  }
-  background-color: #adeca7;
-  padding: 20px;
-  border-radius: 30px;
-`;
-
-const ImgWrapper = styled.div`
-  > img {
-    width: 300px;
-    height: 300px;
-  }
-`;
+import Header from "../Components/Header";
 
 export default function Editor() {
   return (
@@ -45,6 +25,25 @@ export default function Editor() {
     </main>
   );
 }
+
+const Introduction = styled.div`
+  > h3 {
+    margin: 20px;
+  }
+  > div {
+    margin: 20px;
+  }
+  background-color: #adeca7;
+  padding: 20px;
+  border-radius: 30px;
+`;
+
+const ImgWrapper = styled.div`
+  > img {
+    width: 300px;
+    height: 300px;
+  }
+`;
 
 /*
   Editor.js 구현 목표 체크리스트
