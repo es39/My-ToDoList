@@ -13,7 +13,7 @@ export const TodoList = () => {
 
   const getTodoList = () => {
     axios
-      .get(`/todo`)
+      .get(`https://todo-forest.herokuapp.com/todo`)
       .then((res) => {
         setData(res.data);
       })
@@ -24,7 +24,7 @@ export const TodoList = () => {
 
   useEffect(() => {
     getTodoList();
-  }, [data]);
+  }, []);
 
   /* 포스트 요청 */
   const addValue = (text) => {

@@ -7,7 +7,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 삭제 요청 */
   const onRemove = (id) => {
-    fetch(`/todo/${id}`, {
+    fetch(`https://todo-forest.herokuapp.com/todo/${id}`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
     })
@@ -19,7 +19,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 체크박스 수정 요청 */
   useEffect(() => {
-    fetch(`/todo/${id}`, {
+    fetch(`https://todo-forest.herokuapp.com/todo/${id}`, {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

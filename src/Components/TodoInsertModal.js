@@ -8,7 +8,7 @@ const TodoInsert = ({ addValue, isModal, select }) => {
   /* 할 일 목록 수정 요청 */
   const handleEdit = () => {
     axios
-      .patch(`/todo/${select.id}`, {
+      .patch(`https://todo-forest.herokuapp.com/todo/${select.id}`, {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
           text: value,
