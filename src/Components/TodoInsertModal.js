@@ -6,7 +6,7 @@ const TodoInsert = ({ addValue, isModal, select }) => {
 
   /* 할 일 목록 수정 요청 */
   const handleEdit = () => {
-    fetch(`http://localhost:3001/todo/${select.id}`, {
+    fetch(`/todo/${select.id}`, {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

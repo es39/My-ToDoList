@@ -10,14 +10,14 @@ export const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState(null);
 
-  const data = useFetch("http://localhost:3001/todo");
+  const data = useFetch("/todo");
 
   /* 포스트 요청 */
   const addValue = (text) => {
     if (text === "") {
       return alert("입력은 필수다 구리!");
     } else {
-      fetch("http://localhost:3001/todo", {
+      fetch("/todo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, checked: false }),
