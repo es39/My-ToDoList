@@ -7,7 +7,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 삭제 요청 */
   const onRemove = (id) => {
-    fetch(`http://localhost:4000/todo/${id}`, {
+    fetch(`http://localhost:3001/todo/${id}`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
     })
@@ -20,7 +20,7 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
 
   /* 체크박스 수정 요청 */
   useEffect(() => {
-    fetch(`http://localhost:4000/todo/${id}`, {
+    fetch(`http://localhost:3001/todo/${id}`, {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
