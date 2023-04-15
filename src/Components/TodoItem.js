@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
   const { id, text, checked } = todo;
