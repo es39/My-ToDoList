@@ -126,5 +126,5 @@ const TodoMain = styled.main`
   6. delete 기능 추가 *
   7. 체크박스 기능 추가 *
   7-1. 체크되었을 경우, 안되었을 경우 구분 *
-  8. styled-components 적용 
+  8. styled-components 적용 *
 */
