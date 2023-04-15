@@ -22,9 +22,8 @@ export const TodoList = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, checked: false }),
       })
-        .then((data) => {
+        .then(() => {
           window.location.reload();
-          console.log(data);
         })
         .catch((err) => console.log(err));
     }
