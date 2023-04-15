@@ -11,7 +11,7 @@ export const TodoList = () => {
   const [select, setSelect] = useState(null);
   const [data, setData] = useState(null);
 
-  useEffect(() => {
+  const getTodoList = () => {
     axios
       .get(`/todo`)
       .then((res) => {
@@ -20,6 +20,10 @@ export const TodoList = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    getTodoList();
   }, [data]);
 
   /* 포스트 요청 */
