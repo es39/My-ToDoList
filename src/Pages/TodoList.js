@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import TodoInsertModal from "../Components/TodoInsertModal";
 import TodoItem from "../Components/TodoItem";
-import useFetch from "../util/useFetch";
 
 export const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState(null);
+  const [data, setData] = useState(null);
 
-  const data = useFetch("/todo");
+  useEffect(() => {
+    axios
+      .get(`/todo`)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [data]);
 
   /* 포스트 요청 */
   const addValue = (text) => {
