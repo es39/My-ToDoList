@@ -4,6 +4,11 @@
       "text": "안녕하세요!",
       "checked": true,
       "id": 1
+    },
+    {
+      "text": "작살나게 밥먹기",
+      "checked": false,
+      "id": 2
     }
   ]
 }
