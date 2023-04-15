@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -6,14 +7,14 @@ const TodoInsert = ({ addValue, isModal, select }) => {
 
   /* 할 일 목록 수정 요청 */
   const handleEdit = () => {
-    fetch(`/todo/${select.id}`, {
-      method: "PATCH",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        text: value,
-        checked: select.checked,
-      }),
-    })
+    axios
+      .patch(`/todo/${select.id}`, {
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          text: value,
+          checked: select.checked,
+        }),
+      })
       .then(() => {
         setValue("");
         isModal();

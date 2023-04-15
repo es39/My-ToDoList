@@ -27,13 +27,10 @@ export const TodoList = () => {
     if (text === "") {
       return alert("입력은 필수다 구리!");
     } else {
-      fetch("/todo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, checked: false }),
-      })
+      axios
+        .post("/todo")
         .then(() => {
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((err) => console.log(err));
     }

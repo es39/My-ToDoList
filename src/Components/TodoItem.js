@@ -12,7 +12,6 @@ export const TodoItem = ({ todo, isModal, onChangeSelect }) => {
       headers: { "Content-type": "application/json" },
     })
       .then((data) => {
-        console.log(data);
         window.location.reload();
       })
       .catch((err) => console.log(err));
